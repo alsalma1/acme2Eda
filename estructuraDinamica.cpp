@@ -49,12 +49,15 @@ void estructuraDinamica::AfegirInici(int i){
 
 void estructuraDinamica::Esborrar(int i){
 	node *actual = inici;
+	node *anterior = nullptr;
 
 	while(actual != nullptr){
 		
 		if(actual->dada != i){
+			anterior = actual;
 			actual = actual ->seguent;
-		}else{
+		}
+		else{
 			// El nodo esta al inici
 			if(actual == inici){
 				inici = inici->seguent;
@@ -63,18 +66,18 @@ void estructuraDinamica::Esborrar(int i){
 			}
 
 			// Node al final
-            if(actual == final){
-                node *anterior = inici;
-
-                while(anterior->seguent != final){
-                    anterior = anterior->seguent;
-                }
-
+            else if(actual == final){
                 anterior->seguent = nullptr;
                 final = anterior;
                 delete actual;
                 return;
             }
+			else{
+				anterior->seguent = actual->seguent;
+				delete actual;
+				return;
+			}
+
 		}
 	}
 }

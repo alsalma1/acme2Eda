@@ -20,7 +20,6 @@ int main () {
 	int n;
 	estructuraDinamica e;
 	
-	
 	cin >> n;
 	while (n != 0) {
 		if (n > 0)
